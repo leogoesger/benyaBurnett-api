@@ -6,7 +6,7 @@ import app from "./app";
 
 dotenv.config({ path: ".env" });
 
-const port = parseInt(process.env.PORT as string, 10) || 8080;
+const port = parseInt(process.env.PORT as string, 10) || 4000;
 app.set("port", port);
 
 (() =>
