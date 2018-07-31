@@ -1,3 +1,4 @@
-import welcomeController from "./welcome";
+import userController from "./user";
+import articleController from "./article";
 
-export { welcomeController };
+export { userController, articleController };
