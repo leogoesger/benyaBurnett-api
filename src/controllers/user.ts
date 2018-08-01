@@ -1,83 +1,129 @@
-import { Request, Response } from "express";
-import { User } from "../models";
-import { verify, sign } from "jsonwebtoken";
-import { error } from "util";
+import { Request, Response } from 'express';
+import { User } from '../models';
+import { verify, sign } from 'jsonwebtoken';
+import { error } from 'util';
+
+const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+export function validateValue(value: string, regex: any) {
+	return regex.test(value);
+}
+
+export function validateRecBody(req: Request, res: Response) {
+	//email
+	if (!validateValue(req.body.email, emailRegex)) {
+		return res.status(400).send({
+			success: false,
+			message: `Not a valid email, please try again`,
+			route: 'user/signup',
+		});
+	}
+	//password
+	if (!validateValue(req.body.password, passwordRegex)) {
+		return res.status(400).send({
+			success: false,
+			message: `Password must be eight characters long and contain at least one letter and one number`,
+			route: 'user/signup',
+		});
+	}
+	//name must be > 0 in length
+	if (!req.body.name) {
+		return res.status(400).send({
+			success: false,
+			message: `Not a proper name`,
+			route: 'user/signup',
+		});
+	}
+}
 
 const userController = {
-    logIn(req: Request, res: Response) {
-        User.findOne(
-            {
-                email: req.body.email,
-            },
-            (err, user) => {
-                if (err) throw err;
+	async logIn(req: Request, res: Response) {
+		if (!req.body.email || !req.body.password) {
+			return res.status(400).send({
+				success: false,
+				message: `Email and/or Password field can't be empty`,
+				route: 'user/login',
+			});
+		}
 
-                if (!user) {
-                    res.send({
-                        success: false,
-                        message: "Authentication failed. User not found.",
-                        reroute: "/users/login",
-                    });
-                } else {
-                    // Check if password matches
-                    const isAuth = user.comparePassword(req.body.password);
+		const user = await User.findOne({
+			email: req.body.email,
+		});
 
-                    user.jwt = sign(
-                        { email: req.body.email },
-                        process.env.JWT_SECRET
-                    );
+		if (!user) {
+			res.status(401).send({
+				success: false,
+				message: 'Authentication failed. User not found.',
+				reroute: '/users/login',
+			});
+		} else {
+			// Check if password matches
+			const isAuth = await user.comparePassword(req.body.password);
+			if (isAuth) {
+				const userObj = user.toObject();
+				userObj.jwt = sign(
+					{ email: req.body.email },
+					process.env.JWT_SECRET
+				);
 
-                    if (isAuth) {
-                        res.send(user);
-                    }
-                }
-            }
-        );
-    },
+				return res.status(200).send({
+					success: true,
+					message: userObj,
+					route: 'articles/post',
+				});
+			} else {
+				return res.status(401).send({
+					success: false,
+					message: `Username and/or Password don't match`,
+					route: 'user/login',
+				});
+			}
+		}
+	},
 
-    signUp(req: Request, res: Response) {
-        const newUser = new User({
-            email: req.body.email,
-            password: req.body.password,
-            name: req.body.name,
-        });
+	async signUp(req: Request, res: Response) {
+		const user = await User.findOne({ email: req.body.email });
+		if (user) {
+			return res.status(400).send({
+				success: false,
+				message: `Username: ${req.body.email} not available`,
+				route: 'user/signup',
+			});
+		} else {
+			//validate req.body params
 
-        User.findOne({ email: req.body.email }, (err, user) => {
-            if (user) {
-                return res.send({
-                    success: false,
-                    message: `Username: ${req.body.email} not available`,
-                    route: "user/signup",
-                });
-            } else {
-                const jwt = sign(
-                    { email: req.body.email },
-                    process.env.JWT_SECRET
-                );
+			validateRecBody(req, res);
 
-                newUser
-                    .save()
-                    .then(d => {
-                        const dd = d.toObject();
-                        dd.jwt = jwt;
-                        return res.send({
-                            success: true,
-                            message: dd,
-                            route: "user/articles",
-                        });
-                    })
-                    .catch(err => {
-                        throw err;
-                    });
-            }
-        });
-    },
+			const newUser = new User({
+				email: req.body.email,
+				password: req.body.password,
+				name: req.body.name,
+			});
+			const jwt = sign({ email: req.body.email }, process.env.JWT_SECRET);
 
-    changePWD(req: Request, res: Response) {
-        User.find({}, (error, users) => {
-            return res.send(users);
-        });
-    },
+			newUser
+				.save()
+				.then((user) => {
+					const userObj = user.toObject();
+					userObj.jwt = jwt;
+					return res.status(200).send({
+						success: true,
+						message: userObj,
+						route: 'user/articles',
+					});
+				})
+				.catch((err) => {
+					throw err;
+				});
+		}
+	},
+
+	listUsers(req: Request, res: Response) {
+		User.find({}, (error, users) => {
+			return res.send(users);
+		});
+	},
 };
 
 export default userController;
