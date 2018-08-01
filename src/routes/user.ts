@@ -1,10 +1,10 @@
-import { Router } from "express";
-import { userController } from "../controllers";
+import { Router } from 'express';
+import { userController } from '../controllers';
 
 const user = Router();
 
-user.route("/login").get(userController.logIn);
-user.route("/signup").post(userController.signUp);
-user.route("/changePWD").get(userController.changePWD);
+user.route('/login').post(userController.logIn);
+user.route('/signup').post(userController.signUp);
+user.route('/users').post(userController.listUsers);
 
 export default user;

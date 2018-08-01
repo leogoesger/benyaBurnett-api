@@ -1,10 +1,10 @@
-import { Router } from "express";
-import user from "./user";
-import article from "./article";
+import { Router } from 'express';
+import user from './user';
+import article from './article';
 
 const router = Router();
 
-router.use("/api/user", user);
-router.use("api/article", article);
+router.use('/api/user', user);
+router.use('/api/articles', article);
 
 export default router;
