@@ -1,8 +1,9 @@
-import { Router } from "express";
-import { articleController } from "../controllers";
+import { Router } from 'express';
+import { articleController } from '../controllers';
 
 const article = Router();
 
-article.route("/showall").get(articleController.show);
+article.route('/').get(articleController.getArticles);
+article.route('/post').post(articleController.postArticle);
 
 export default article;
