@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { Article } from '../models';
+import { typeENUM } from '../static/staticVar';
 
 export function validatePostArticleReqParams(req: Request, res: Response) {
 	if (!req.body.title) {
@@ -32,14 +33,10 @@ export function validatePostArticleReqParams(req: Request, res: Response) {
 			route: 'article/post',
 		});
 	} else {
-		if (
-			['youtube', 'news', 'lecture', 'interview'].indexOf(
-				req.body.type
-			) === -1
-		) {
+		if (typeENUM.indexOf(req.body.type) === -1) {
 			return res.status(400).send({
 				success: false,
-				message: `Article type must be one of 'youtube', 'news', 'lecture', 'interview'`,
+				message: `Article type must be one of ${typeENUM}`,
 				route: 'article/post',
 			});
 		}
@@ -48,8 +45,13 @@ export function validatePostArticleReqParams(req: Request, res: Response) {
 
 const articleController = {
 	getArticles: (req: Request, res: Response) => {
-		console.log('get articles');
 		Article.find({}, (error, articles) => {
+			return res.send(articles);
+		});
+	},
+
+	getArticlesByType: (req: Request, res: Response) => {
+		Article.find({ type: req.params.type }, (error, articles) => {
 			return res.send(articles);
 		});
 	},

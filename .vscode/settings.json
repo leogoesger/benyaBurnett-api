@@ -1,2 +1,9 @@
 {
+<<<<<<< HEAD
 }
+=======
+	"prettier.tabWidth": 4,
+	"prettier.singleQuote": false,
+	"editor.tabSize": 4
+}
+>>>>>>> BB-20: fetch articles by type

@@ -1,4 +1,5 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from "mongoose";
+import { typeENUM } from "../static/staticVar";
 
 const articleSchema = new Schema({
 	title: { type: String, required: true },
@@ -6,12 +7,13 @@ const articleSchema = new Schema({
 	date: { type: Date, default: Date.now },
 	type: {
 		type: String,
-		enum: ['youtube', 'news', 'lecture', 'interview'],
-		default: 'news',
+		enum: typeENUM,
+		default: "news",
 		required: true,
 	},
+	url: { type: String },
 });
 
-const Article = model('Article', articleSchema);
+const Article = model("Article", articleSchema);
 
 export default Article;
