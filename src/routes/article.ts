@@ -5,5 +5,6 @@ const article = Router();
 
 article.route('/').get(articleController.getArticles);
 article.route('/post').post(articleController.postArticle);
+article.route('/:type').get(articleController.getArticlesByType);
 
 export default article;
