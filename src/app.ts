@@ -15,7 +15,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/bbDB");
+mongoose.connect(
+    process.env.MONGODB_URI || "mongodb://localhost:27017/bbDB",
+    { useNewUrlParser: true }
+);
 
 app.disable("etag");
 
