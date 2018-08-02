@@ -1,10 +1,11 @@
 import * as express from "express";
-
 import * as bodyParser from "body-parser";
 import * as logger from "morgan";
 import * as cors from "cors";
-
 import * as mongoose from "mongoose";
+import * as dotenv from "dotenv";
+
+dotenv.config({ path: ".env" });
 import routes from "./routes";
 
 const app = express();
