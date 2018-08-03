@@ -118,6 +118,10 @@ const userController = {
             return res.send(users);
         });
     },
+
+    getme(req: any, res: Response) {
+        return res.status(200).send(req.body.user);
+    },
 };
 
 export default userController;

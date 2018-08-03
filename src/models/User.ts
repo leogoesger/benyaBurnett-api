@@ -1,5 +1,6 @@
 import * as bcrypt from "bcrypt";
 import { Schema, model, Model, Document } from "mongoose";
+import { verify } from "jsonwebtoken";
 
 export interface IUserDocument extends Document {
     name: string;
@@ -10,7 +11,7 @@ export interface IUserDocument extends Document {
 }
 
 interface IUserModel extends Model<IUserDocument> {
-    findByToken(): void;
+    findByToken: (token: string) => Promise<any>;
 }
 
 const UserSchema: Schema = new Schema({
@@ -45,6 +46,15 @@ UserSchema.pre("save", async function save(next) {
     user.password = hash;
     next();
 });
+
+UserSchema.statics.findByToken = (token: string) => {
+    try {
+        const decoded: any = verify(token, process.env.JWT_SECRET);
+        return User.findOne({ email: decoded.email });
+    } catch (error) {
+        return Promise.reject();
+    }
+};
 
 UserSchema.methods.comparePassword = function comparePassword(
     candidatePassword: string
