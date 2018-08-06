@@ -48,12 +48,20 @@ UserSchema.pre('save', async function save(next) {
 });
 
 UserSchema.statics.findByToken = (token: string) => {
-	try {
-		const decoded: any = verify(token, process.env.JWT_SECRET);
-		return User.findOne({ email: decoded.email });
-	} catch (error) {
-		return Promise.reject();
-	}
+    try {
+        const { email, expirationTime }: any = verify(
+            token,
+            process.env.JWT_SECRET
+        );
+        const currentTime = new Date();
+
+        if (expirationTime < currentTime.getTime()) {
+            return Promise.reject({ message: "Please Login again!" });
+        }
+        return User.findOne({ email });
+    } catch (error) {
+        return Promise.reject({ message: "Please Login again!" });
+    }
 };
 
 UserSchema.methods.comparePassword = function comparePassword(
