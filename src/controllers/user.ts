@@ -58,8 +58,15 @@ const userController = {
             const isAuth = await user.comparePassword(req.body.password);
             if (isAuth) {
                 const userObj = user.toObject();
+                const currentTime = new Date();
+                const expirationTime =
+                    currentTime.getTime() + 4 * 60 * 60 * 1000;
+
                 userObj.jwt = sign(
-                    { email: req.body.email },
+                    {
+                        email: req.body.email,
+                        expirationTime,
+                    },
                     process.env.JWT_SECRET
                 );
 
@@ -94,7 +101,14 @@ const userController = {
                 password: req.body.password,
                 name: req.body.name,
             });
-            const jwt = sign({ email: req.body.email }, process.env.JWT_SECRET);
+            const currentTime = new Date();
+            const jwt = sign(
+                {
+                    email: req.body.email,
+                    expirationTime: currentTime.getTime() + 4 * 60 * 60 * 1000,
+                },
+                process.env.JWT_SECRET
+            );
 
             newUser
                 .save()

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import * as nodemailer from "nodemailer";
 import * as mg from "nodemailer-mailgun-transport";
+import { validateEmail } from "../utils/helpers";
 
 const auth = {
     auth: {
@@ -9,14 +10,25 @@ const auth = {
     },
 };
 
+interface IBody extends Request {
+    body: {
+        name: string;
+        email: string;
+        phone: string;
+        msg: string;
+    };
+}
+
 const nodeMailerMailgun = nodemailer.createTransport(mg(auth));
 
 const contactController = {
-    submit: (req: Request, res: Response) => {
+    submit: (req: IBody, res: Response) => {
         const { name, email, phone, msg } = req.body;
-        if (!name || !email || !phone || !msg) {
+
+        if (!name || !email || !phone || !msg || !validateEmail(email)) {
             return res.status(400).send({ message: "Invalid Message!" });
         }
+
         const mailOptions = {
             from: `${name} <${email}>`, // sender address
             to: "leoq91@gmail.com", // list of receivers
