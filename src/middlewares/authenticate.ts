@@ -1,19 +1,19 @@
-import { User } from '../models';
-import { Response } from 'express';
+import { User } from "../models";
+import { Response } from "express";
 
 const authenticate = (req: any, res: Response, next: any) => {
-	const token = req.header('bbToken');
-	User.findByToken(token)
-		.then((user) => {
-			if (!user) {
-				res.status(401).send({ message: 'No user found!' });
-			}
-			req.body.user = user;
-			next();
-		})
-		.catch((_) =>
-			res.status(401).send({ message: 'Authentication Failed!' })
-		);
+    const token = req.header("bbToken");
+    User.findByToken(token)
+        .then(user => {
+            if (!user) {
+                res.status(401).send({ message: "No user found!" });
+            }
+            req.body.user = user;
+            next();
+        })
+        .catch(_ =>
+            res.status(401).send({ message: "Authentication Failed!" })
+        );
 };
 
 export default authenticate;

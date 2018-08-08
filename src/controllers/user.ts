@@ -59,11 +59,13 @@ const userController = {
             if (isAuth) {
                 const userObj = user.toObject();
                 const currentTime = new Date();
+                const expirationTime =
+                    currentTime.getTime() + 4 * 60 * 60 * 1000;
 
                 userObj.jwt = sign(
                     {
                         email: req.body.email,
-                        expirationTime: currentTime.getTime() + 0.5 * 60 * 1000,
+                        expirationTime,
                     },
                     process.env.JWT_SECRET
                 );

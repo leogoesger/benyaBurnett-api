@@ -1,10 +1,17 @@
 import { Schema, model } from "mongoose";
-import { typeENUM } from "../static/staticVar";
+
+const typeENUM = [
+    "online-lectures",
+    "video-interviews",
+    "reviews",
+    "published-articles",
+    "upcoming-events",
+];
 
 const articleSchema = new Schema({
     title: { type: String, required: true },
     text: { type: String, required: true },
-    date: { type: Date, default: Date.now },
+    date: { type: Date, default: new Date() },
     type: {
         type: String,
         enum: typeENUM,
