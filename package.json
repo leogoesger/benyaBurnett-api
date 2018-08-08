@@ -9,7 +9,7 @@
         "tslint": "tslint -c tslint.json -p tsconfig.json",
         "serve": "node ./build/index.js",
         "seed": "node --require ts-node/register ./src/scripts/seedDB.ts",
-        "pm2:production": "yarn pm2 start ecosystem.json --env production"
+        "pm2:production": "yarn build && yarn pm2 start ecosystem.json --env production"
     },
     "dependencies": {
         "@types/bcrypt": "^2.0.0",
