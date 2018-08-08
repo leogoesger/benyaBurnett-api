@@ -17,6 +17,7 @@ const upcomingEvents = [
         imgUrl:
             "https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg",
         url: "https://www.lipsum.com/",
+        date: "2018-08-07T17:38:49.590Z",
     },
     {
         title: "Lorem ipsum dolor sit amet2",
@@ -26,6 +27,7 @@ const upcomingEvents = [
         imgUrl:
             "https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg",
         url: "https://www.lipsum.com/",
+        date: "2018-08-07T17:38:49.590Z",
     },
     {
         title: "Lorem ipsum dolor sit amet3",
@@ -35,6 +37,7 @@ const upcomingEvents = [
         imgUrl:
             "https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg",
         url: "https://www.lipsum.com/",
+        date: "2018-08-07T17:38:49.590Z",
     },
     {
         title: "Lorem ipsum dolor sit amet4",
@@ -44,6 +47,7 @@ const upcomingEvents = [
         imgUrl:
             "https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg",
         url: "https://www.lipsum.com/",
+        date: "2018-08-07T17:38:49.590Z",
     },
     {
         title: "Lorem ipsum dolor sit amet5",
@@ -53,6 +57,7 @@ const upcomingEvents = [
         imgUrl:
             "https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg",
         url: "https://www.lipsum.com/",
+        date: "2018-08-07T17:38:49.590Z",
     },
 ];
 
