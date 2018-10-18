@@ -48,7 +48,6 @@ UserSchema.pre('save', async function save(next) {
 });
 
 UserSchema.statics.findByToken = (token: string) => {
-  console.log(JSON.stringify(token));
   const { email, expirationTime }: any = verify(token, process.env.JWT_SECRET);
   const currentTime = new Date();
   if (expirationTime < currentTime.getTime()) {

@@ -3,7 +3,6 @@ import { Response } from 'express';
 
 const authenticate = (req: any, res: Response, next: any) => {
   const token = req.header('bbToken');
-  console.log('token authen midddle', token);
   User.findByToken(token)
     .then(user => {
       if (!user) {
