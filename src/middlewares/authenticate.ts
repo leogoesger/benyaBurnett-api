@@ -2,8 +2,8 @@ import { User } from '../models';
 import { Response } from 'express';
 
 const authenticate = (req: any, res: Response, next: any) => {
-  const token = req.header('Authorization');
-  console.log('token authen midddle', token);
+  const token = req.header('bbToken');
+  console.log('token authen midddle', token, req);
   User.findByToken(token)
     .then(user => {
       if (!user) {
