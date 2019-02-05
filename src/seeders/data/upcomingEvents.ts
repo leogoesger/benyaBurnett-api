@@ -1,13 +1,5 @@
 const upcomingEvents = [
   {
-    type: 'upcoming-events',
-    title: 'Event page is undergoing updates',
-    text: 'Event page is undergoing updates',
-    url: 'https://www.benyaburnett.com/',
-    imgUrl:
-      'https://cdn4.iconfinder.com/data/icons/under-construction-1/512/build-512.png',
-  },
-  {
     title:
       'Focusing LIGHT on Sleep: Deep-Dive Investigation into the Sleep/Light Connection',
     text:

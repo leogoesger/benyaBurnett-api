@@ -11,7 +11,7 @@ const leedWell = [
   {
     title: 'ASID project reserch and images',
     text:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'The ASID Research team partnered with Cornell University, Delos, and the Innovative Workplace Institute to conduct a comprehensive pre- and post-occupancy study of the ASID HQ examining how workplace design impacts health, wellness, employee satisfaction, and work performance.',
     type: 'leed-well',
     imgUrl: 'https://benya.nyc3.digitaloceanspaces.com/asid/asid-report.png',
     url:
