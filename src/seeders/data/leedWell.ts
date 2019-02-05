@@ -1,9 +1,9 @@
 const leedWell = [
   {
-    type: 'reviews',
     title: 'ASID Case Study LUTRON Case Study Report',
     text:
       '“The Lutron Quantum system was uniquely able to provide all the lighting control capability we needed for this landmark project.” —Jim Benya, Benya Burnett',
+    type: 'leed-well',
     url:
       'https://benya.nyc3.digitaloceanspaces.com/ASID%20Case%20Study%20LUTRON%20Case%20Study%20report.pdf',
     imgUrl: 'https://benya.nyc3.digitaloceanspaces.com/asid_image.png',
