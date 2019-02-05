@@ -1,49 +1,23 @@
 const onlineLectures = [
-    {
-        title: "Lorem ipsum dolor sit amet1",
-        text:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        type: "online-lectures",
-        imgUrl:
-            "https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg",
-        url: "https://www.lipsum.com/",
-    },
-    {
-        title: "Lorem ipsum dolor sit amet2",
-        text:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        type: "online-lectures",
-        imgUrl:
-            "https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg",
-        url: "https://www.lipsum.com/",
-    },
-    {
-        title: "Lorem ipsum dolor sit amet3",
-        text:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        type: "online-lectures",
-        imgUrl:
-            "https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg",
-        url: "https://www.lipsum.com/",
-    },
-    {
-        title: "Lorem ipsum dolor sit amet4",
-        text:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        type: "online-lectures",
-        imgUrl:
-            "https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg",
-        url: "https://www.lipsum.com/",
-    },
-    {
-        title: "Lorem ipsum dolor sit amet5",
-        text:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        type: "online-lectures",
-        imgUrl:
-            "https://pbs.twimg.com/profile_images/846659478120366082/K-kZVvT8.jpg",
-        url: "https://www.lipsum.com/",
-    },
+  {
+    type: 'online-lectures',
+    title:
+      '“First do no harm: Practicing Lighting Design or Medicine….. without a license?” by Deborah Burnett',
+    text:
+      'Lecture from the 6th VELUX Daylight Symposium “Daylight as a driver of change” that took place in London on 2-3 September 2015. For more information visit http://thedaylightsite.com',
+    url: 'https://www.youtube.com/watch?v=JAMeoCPVWRQ',
+    imgUrl: 'https://benya.nyc3.digitaloceanspaces.com/interviews/donoharm.png',
+  },
+  {
+    type: 'online-lectures',
+    title:
+      'Deborah Burnett - Dynamic Daylight A Biological Health and Wellness Perspective',
+    text:
+      'Deborah Burnett - Dynamic Daylight A Biological Health and Wellness Perspective',
+    url: 'https://www.youtube.com/watch?v=pnCNXh_wf2c',
+    imgUrl:
+      'https://benya.nyc3.digitaloceanspaces.com/interviews/whydaylight.png',
+  },
 ];
 
 export default onlineLectures;
