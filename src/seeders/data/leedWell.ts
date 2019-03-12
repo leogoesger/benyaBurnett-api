@@ -17,6 +17,15 @@ const leedWell = [
     url:
       'https://benya.nyc3.digitaloceanspaces.com/asid/ASID%20project%20reserch%20and%20images.pdf',
   },
+  {
+    type: 'leed-well',
+    title:
+      'Lighting Is Focus at World’s First Space Double Platinum-Certified by LEED, WELL',
+    text:
+      'National Lighting Bureau article and link to online video interview where both Deborah and James discuss how the project was specified and technical decisions made for this award winning project with DOCUMENTED wellness benefits',
+    url: 'https://nlb.org/6930-2/',
+    imgUrl: 'https://benya.nyc3.digitaloceanspaces.com/leedImg.png',
+  },
 ];
 
 export default leedWell;
